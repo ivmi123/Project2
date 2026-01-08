@@ -89,18 +89,15 @@ if uploaded_file is not None:
             # Fallback: simple threshold-based recognition
             st.write("## Using fallback recognition")
             # Simple heuristic based on pixel intensity
-else:
-    st.write(f"Digit is: {{prob:.2f}}")
+            st.write(f"Digit is: {{prob:.2f}}")
+            # Fallback: simple threshold-based recognition
+            st.write("## Using fallback recognition")
+            # Simple heuristic based on pixel intensity
+            digit_guess = np.argmax(image.reshape(8, 8) % 10)
+            st.write(f"Estimated digit: {digit_guess}")
 
-    # Fallback: simple threshold-based recognition
-    st.write("## Using fallback recognition")
-    
-    # Simple heuristic based on pixel intensity
-    digit_guess = np.argmax(image.reshape(8, 8) % 10)
-    st.write(f"Estimated digit: {digit_guess}")
-
-except Exception as e:
-    st.error(f"Error processing image: {e}")
+    except Exception as e:
+         st.error(f"Error processing image: {e}")
 
 # Instructions
 st.sidebar.header("Instructions")
